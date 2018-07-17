@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.ooad.dao.CourseMapper">
+    <resultMap id="BaseResultMap" type="com.example.ooad.domain.Course">
+        <id column="id" property="courseNo" jdbcType="INTEGER"/>
+        <id column="courseName" property="courseName" jdbcType="VARCHAR"/>
+        <id column="credit" property="credits" jdbcType="INTEGER"/>
+        <id column="semester" property="semester" jdbcType="VARCHAR"/>
+        <id column="preNo" property="preNo" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from course
+    </select>
+    <select id="findById" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM course where course.id = #{id}
+  </select>
+    <delete id="deleteCourseById" parameterType="Integer">
+    DELETE  FROM course WHERE course.id = #{id}
+  </delete>
+    <insert id="createCourse" parameterType="Course" useGeneratedKeys="true" keyProperty="id">
+     INSERT INTO course(courseName,credit,semester)
+     VALUES(#{courseName},#{credits},#{semester})
+    </insert>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.ooad.dao.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.example.ooad.domain.Student">
+        <id column="id" property="ssn" jdbcType="INTEGER"/>
+        <id column="name" property="name" jdbcType="VARCHAR"/>
+        <id column="pwd" property="password" jdbcType="VARCHAR"/>
+        <id column="major" property="major" jdbcType="VARCHAR"/>
+        <id column="degree" property="degree" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from student
+    </select>
+    <select id="findStudentById" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM student where student.id = #{ssn}
+  </select>
+    <select id="findStudentByName" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM student where student.name = #{name}
+  </select>
+    <delete id="deleteById" parameterType="Integer">
+    DELETE  FROM course WHERE student.id = #{id}
+  </delete>
+</mapper>

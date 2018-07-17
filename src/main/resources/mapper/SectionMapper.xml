@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.ooad.dao.SectionMapper">
+    <resultMap id="BaseResultMap" type="com.example.ooad.domain.Section">
+        <id column="id" property="sectionNo" jdbcType="INTEGER"/>
+        <id column="dayOfWeek" property="dayOfWeek" jdbcType="VARCHAR"/>
+        <id column="timeOfDay" property="timeOfDay" jdbcType="VARCHAR"/>
+        <id column="room" property="room" jdbcType="VARCHAR"/>
+        <id column="seatingCapacity" property="seatingCapacity" jdbcType="INTEGER"/>
+        <id column="teacherId" property="teacherNo" jdbcType="INTEGER"/>
+        <id column="courseId" property="courseNo" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from section
+    </select>
+    <select id="findByTeacherId" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM section where section.teacherId = #{id}
+  </select>
+    <select id="findByCourseId" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM section where section.courseId = #{id}
+  </select>
+    <select id="findById" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM section where section.id = #{id}
+  </select>
+    <delete id="deleteById" parameterType="Integer">
+    DELETE  FROM course WHERE section.id = #{id}
+  </delete>
+    <update id="update" parameterType="com.example.ooad.domain.Section">
+		   update section set teacherId = #{teacherNo}
+			   where id = #{sectionNo};
+   </update>
+</mapper>

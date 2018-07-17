@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.ooad.dao.PlanOfStudyMapper">
+    <resultMap id="BaseResultMap" type="com.example.ooad.domain.PlanOfStudy">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="semester" property="semester" jdbcType="VARCHAR"/>
+        <id column="courseId" property="courseNo" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="findBySemester" parameterType="String" resultMap="BaseResultMap">
+    SELECT * FROM planofstudy where planofstudy.semester = #{semester}
+  </select>
+</mapper>

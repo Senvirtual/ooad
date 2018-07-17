@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.ooad.dao.TranscriptEntryMapper">
+    <resultMap id="BaseResultMap" type="com.example.ooad.domain.TranscriptEntry">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <id column="grade" property="grade" jdbcType="VARCHAR"/>
+        <id column="studentId" property="studentNo" jdbcType="INTEGER"/>
+        <id column="sectionId" property="sectionNo" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="findByStudentId" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM transcriptentry where transcriptentry.studentId = #{id}
+  </select>
+    <select id="findBySectionId" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM transcriptentry where transcriptentry.sectionId = #{id}
+  </select>
+    <select id="findById" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM transcriptentry where transcriptentry.id = #{id}
+  </select>
+    <delete id="deleteById" parameterType="Integer">
+    DELETE  FROM transcriptentry WHERE transcriptentry.id = #{id}
+  </delete>
+    <update id="update" parameterType="com.example.ooad.domain.TranscriptEntry">
+		   update transcriptentry grade = #{grade}
+			   where id = #{id};
+   </update>
+    <insert id="insert" parameterType="com.example.ooad.domain.TranscriptEntry" useGeneratedKeys="true" keyProperty="id">
+        insert into transcriptentry(grade,studentId,sectionId)
+        values(#{grade}, #{studentNo}, #{sectionNo})
+    </insert>
+</mapper>
