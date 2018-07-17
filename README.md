@@ -1,6 +1,6 @@
 # ooad
 类图
-![Image text]https://github.com/Senvirtual/ooad/blob/master/src/picture/uml.png
+![Image text](https://github.com/Senvirtual/ooad/blob/master/src/picture/uml.png)
 ![Image text]https://github.com/Senvirtual/ooad/blob/master/src/picture/系统结构图.JPG
 ![Image text]https://github.com/Senvirtual/ooad/blob/master/src/picture/登录.JPG
 ![Image text]https://github.com/Senvirtual/ooad/blob/master/src/picture/学生选课.JPG
